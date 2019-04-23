@@ -31,13 +31,13 @@ namespace WishList.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public IActionResult Register(RegisterViewModel model)
         {
             var appUser = new ApplicationUser
             {
                 Email = model.Email
             };
-            var result = await _userManager.CreateAsync(appUser, model.Password);
+            var result = _userManager.CreateAsync(appUser, model.Password).Result;
             if(!result.Succeeded)
             {
                 foreach(var error in result.Errors)
