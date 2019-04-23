@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace WishList.Controllers
 {
+    [Authorize]
     public class AccountController:Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
